@@ -138,8 +138,8 @@ def update_defs_from_freshclam(path, library_path=""):
 # Makes sure only formatted messages are sent to Sentry (identified by WARNING/ERROR)
 def print_freshclam_output(output: bytes):
     textOutput = output.decode()
-    textOutput = output.replace("ERROR:", "error:")
-    textOutput = output.replace("WARNING:", "warning:")
+    textOutput = textOutput.replace("ERROR:", "error:")
+    textOutput = textOutput.replace("WARNING:", "warning:")
     print("freshclam output:\n%s" % textOutput)
 
     if "error:" in textOutput:
