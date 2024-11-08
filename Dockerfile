@@ -10,14 +10,14 @@ WORKDIR /opt/app
 COPY ./*.py /opt/app/
 COPY requirements.txt /opt/app/requirements.txt
 
+# --CGI ONLY--
 # put your cert in root of project
-COPY ZscalerRootCA.crt /etc/ssl/certs/
-RUN cat /etc/ssl/certs/ZscalerRootCA.crt >> /etc/ssl/certs/ca-bundle.crt
+# COPY ZscalerRootCA.crt /etc/ssl/certs/
+# RUN cat /etc/ssl/certs/ZscalerRootCA.crt >> /etc/ssl/certs/ca-bundle.crt
 
 # Install packages
 RUN yum update -y
 RUN amazon-linux-extras install epel -y
-# RUN yum install -y https://archives.fedoraproject.org/pub/archive/epel/7.9/x86_64/Packages/e/epel-release-7-12.noarch.rpm
 RUN yum install -y cpio python3-pip yum-utils zip unzip less compat-openssl10
 
 # This had --no-cache-dir, tracing through multiple tickets led to a problem in wheel
